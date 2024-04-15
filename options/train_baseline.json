@@ -1,0 +1,106 @@
+{
+  "task": "Guided SR",
+  "model": "plain",
+  "gpu_ids": [
+    0
+  ],
+  "dist": true,
+  "scale": 8,
+  "n_channels_lr": 1,
+  "wandb":true,
+  "n_channels_guide": 3,
+  "path": {
+    "root": "Model/SR_competition24_baseline",
+    "images": "Model/SR_competition24_baseline/images"
+  },
+  "datasets": {
+    "train": {
+      "name": "train_dataset",
+      "dataset_type": "guided_sr",
+      "dataroot_lr": "/home/travail/Dataset/ChallengePBVS24/thermal/train/LR_x8/",
+      "dataroot_guide": "/home/travail/Dataset/ChallengePBVS24/visible/train/",
+      "dataroot_gt": "/home/travail/Dataset/ChallengePBVS24/thermal/train/GT/",
+      "H_size": 64,
+      "proba_without_rgb":0.0,
+      "patch":true,
+      "dataloader_shuffle": true,
+      "dataloader_num_workers": 8
+    },
+    "validation": {
+      "name": "validation_dataset",
+      "dataset_type": "guided_sr",
+      "dataroot_lr": "/home/travail/Dataset/ChallengePBVS24/thermal/val/LR_x8/",
+      "dataroot_guide": "/home/travail/Dataset/ChallengePBVS24/visible/val/",
+      "dataroot_gt": "/home/travail/Dataset/ChallengePBVS24/thermal/val/GT/",
+      "dataloader_shuffle": true
+    },
+    "test": {
+      "name": "test_dataset",
+      "dataset_type": "guided_sr",
+      "dataroot_guide": "/home/travail/Dataset/ChallengePBVS24/visible/test/guided_x8/",
+      "dataroot_gt": "/home/travail/Dataset/ChallengePBVS24/thermal/test/guided_x8/LR_x8/"
+    }
+  },
+  "netG": {
+    "net_type": "swinfusionSR",
+    "upscale": 1,
+    "in_chans": 1,
+    "img_size": 64,
+    "window_size": 8,
+    "img_range": 1.0,
+    "depths": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "embed_dim": 60,
+    "num_heads": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "Ex_depths" : [4],
+    "Fusion_depths": [2, 2],
+    "Re_depths": [4],
+    "Ex_num_heads": [6],
+    "Fusion_num_heads":[6, 6],
+    "Re_num_heads":[6],
+    "mlp_ratio": 2,
+    "upsampler": "",
+    "resi_connection": "1conv",
+    "init_type": "default"
+  },
+  "train": {
+    "batch_size": 16,
+    "G_lossfn_type": "mixed",
+    "weights":{
+      "l1":  1.0,
+      "mse": 0.0,
+      "ssim": 0.0,
+      "psnr": 0.0,
+      "contrast": 0.0,
+      "lpips": 0.0,
+      "adversarial": 0.0
+    },
+    "manual_seed": 60,
+    "G_optimizer_lr": 4e-4,
+    "G_optimizer_clipgrad": null,
+    "G_optimizer_reuse": true,
+    "G_scheduler_type": "MultiStepLR",
+    "G_scheduler_milestones": [
+      150000,
+      250000
+    ],
+    "G_scheduler_gamma": 0.5,
+    "G_regularizer_orthstep": null,
+    "G_regularizer_clipstep": null,
+    "G_param_strict": true,
+    "checkpoint_test": 20000,
+    "checkpoint_print": 50,
+    "limit_test": 150,
+    "limit_validation": 1150,
+    "epochs": 30000
+  }
+}
