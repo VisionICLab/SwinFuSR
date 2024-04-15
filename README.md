@@ -1,15 +1,24 @@
 # SwinFuSR
 SwinFuSR: an image fusion inspired model for RGB-guided thermal image super-resolution 
-## Guided thermal super resolution Examples
+## Guided thermal super resolution Examples ✨
 Some examples of guided resolution on images from PBVS24 track-2 dataset.
 ![](images/example1.png)
 ![](images/example2.png)
 ![](images/example3.png)
-## Architecture
+
+
+## Set up 🚀
+```
+conda create --name SwinFuSR pytorch torchvision pytorch-cuda=11.7 -cpytorch -c nvidia
+conda activate SwinFuSR
+pip install -r requirements.txt
+```
+
+## Architecture 🤖
 The proposed architecture is
 
 ![](images/archi.png)
-## Training
+## Training ⚙️
 Register to the competition to access the [**PBVS dataset**](https://codalab.lisn.upsaclay.fr/competitions/17014#participate), and update **dataroot_lr/dataroot_guide/dataroot_gt path** in the json file.
 
 For training on the small network for x8 guided super resolution(944,491 parameters, trainable with one RTX 3080 12GB):
@@ -28,13 +37,13 @@ For training on the small network for x16 guided super resolution(944,491 parame
 
     python main_train_SwinFuSR.py --opt options/train_x16.json
 
-## Fine-tuning
+## Fine-tuning 🖋️
 
 For fine-tuning the network with pre-trained weights, you can download them from the release section. Modify in the json file the argument **path/pretrained_netG** with the path where you put the weights. Then if you want fine tune for example with the baseline pretrained network, you can run:
 
     python main_train_SwinFuSR.py --opt options/train_baseline_finetune.json
 
-## Testing
+## Testing 👌
 For testing, the json should be the same as the one you used for training the network you want to use. Specify in the argument **path/pretrained_netG** with the path where the weights of the network you want to use are.
 
 Then if you want to test the network with ground truth image and compute metrics with, set **without_GT** to true and add the path of your dataset on **datasets/validation/dataroot_lr,dataroot_guide,dataroot_gt**. 
@@ -47,10 +56,10 @@ For example, for testing on test set of the challenge:
 
 
 
-## Arguments
+## Arguments 🕵️
 Argument scripts are described in a json file and are described in the table below
-|Argument|<div style="width:490px">Description</div>| Example|
-|:-:|-----|:-:|
+|Argument|<div style="width:490px">Description</div>| <div style="width:'00px">Example</div>|
+|:-:|:-----:|:-:|
 | task | describe the task to be performed | Guided SR (do not modify) |
 | model | describe the framework ( gan for example) | plain  (do not modify)       |
 | gpu_ids  | the id of the GPUs to be used, and will automatically distribute the data to the various GPUs        | [0] if only one GPU               |
@@ -80,7 +89,7 @@ Argument scripts are described in a json file and are described in the table bel
 |  netG/mlp_ratio |ratio of mlp hidden dim to embedding dim| 2|
 |  upsampler |the reconstruction reconstruction module. | null if upscale=1 or 'pixelshuffle' or 'pixelshuffledirect' or 'nearest+conv'|
 |  resi_connection |the convolutional block before residual connection. | '1conv','3conv' |
-|  init_type |weight initialization type |  'default','normal','uniform','xavier_normal','xavier_uniform','kaiming_normal','kaiming_uniform','orthogonal'|
+|  init_type |weight initialization type |  'default','normal','uniform','xavier_normal','xavier_uniform'|
 |  train/batch_size |batch size |  16|
 |  train/G_lossfn_type |type of Loss, keep 'mixed' for a weighting of several losses  |  'mixed','l1','l2','l2sum'|
 |  train/weights |weighting values for different losses |  \{"l1":  1.0,"mse": 0.0,"ssim": 0.0,"psnr": 0.0,"contrast": 0.0,"lpips": 0.0,"adversarial": 0.0}|
@@ -100,8 +109,5 @@ Argument scripts are described in a json file and are described in the table bel
 |  train/limit_validation | limit number of images to evaluate from validation set|1150|
 |  train/epochs | epoch number to train the model|30000|
 
-## Recommended Environment
-The **package_list.txt** describes version of packages used.
-
-## Acknowledgement
+## Acknowledgement 🤝
 The codes are heavily based on [SwinFusion](https://github.com/Linfeng-Tang/SwinFusion) and a little by [CoReFusion](https://github.com/Kasliwal17/CoReFusion).  Thanks for their inspiring works.
