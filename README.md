@@ -9,14 +9,12 @@ Some examples of guided resolution on images from PBVS24 track-2 dataset.
 
 ## 🚀 Set up 
 ```
-conda create --name SwinFuSR pytorch torchvision pytorch-cuda=11.7 -cpytorch -c nvidia
+conda create --name SwinFuSR pytorch torchvision pytorch-cuda=11.7 -c pytorch -c nvidia
 conda activate SwinFuSR
 pip install -r requirements.txt
 ```
 
 ## 🤖 Architecture 
-The proposed architecture is
-
 ![](images/archi.png)
 ## ⚙️ Training 
 Register to the competition to access the [**PBVS dataset**](https://codalab.lisn.upsaclay.fr/competitions/17014#participate), and update **dataroot_lr/dataroot_guide/dataroot_gt path** in the json file.
