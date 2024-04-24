@@ -1,5 +1,5 @@
 # SwinFuSR
-SwinFuSR: an image fusion inspired model for RGB-guided thermal image super-resolution 
+SwinFuSR: an image fusion inspired model for RGB-guided thermal image super-resolution  [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2404.14533)
 ## ✨ Guided thermal super resolution Examples ✨
 Some examples of guided resolution on images from PBVS24 track-2 dataset.
 ![](images/example1.png)
@@ -106,6 +106,18 @@ Argument scripts are described in a json file and are described in the table bel
 |  train/limit_test | limit number of images to be generated from test set|150|
 |  train/limit_validation | limit number of images to evaluate from validation set|1150|
 |  train/epochs | epoch number to train the model|30000|
+
+## 📜 Citation
+```
+@misc{arnold2024swinfusr,
+      title={SwinFuSR: an image fusion-inspired model for RGB-guided thermal image super-resolution}, 
+      author={Cyprien Arnold and Philippe Jouvet and Lama Seoud},
+      year={2024},
+      eprint={2404.14533},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
+```
 
 ## 🤝 Acknowledgement 
 The codes are heavily based on [SwinFusion](https://github.com/Linfeng-Tang/SwinFusion) and a little by [CoReFusion](https://github.com/Kasliwal17/CoReFusion).  Thanks for their inspiring works.
