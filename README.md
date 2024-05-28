@@ -1,5 +1,7 @@
 # SwinFuSR
 SwinFuSR: an image fusion inspired model for RGB-guided thermal image super-resolution  [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2404.14533)
+
+🏅Top 3 in the Thermal Image Super-Resolution Challenge 2024 (track 2)
 ## ✨ Guided thermal super resolution Examples ✨
 Some examples of guided resolution on images from PBVS24 track-2 dataset.
 ![](images/example1.png)
