@@ -111,13 +111,13 @@ Argument scripts are described in a json file and are described in the table bel
 
 ## 📜 Citation
 ```
-@misc{arnold2024swinfusr,
-      title={SwinFuSR: an image fusion-inspired model for RGB-guided thermal image super-resolution}, 
-      author={Cyprien Arnold and Philippe Jouvet and Lama Seoud},
-      year={2024},
-      eprint={2404.14533},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV}
+@InProceedings{Arnold_2024_CVPR,
+    author    = {Arnold, Cyprien and Jouvet, Philippe and Seoud, Lama},
+    title     = {SwinFuSR: An Image Fusion-inspired Model for RGB-guided Thermal Image Super-resolution},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2024},
+    pages     = {3027-3036}
 }
 ```
 
